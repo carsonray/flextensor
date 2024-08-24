@@ -1,6 +1,6 @@
 import numpy as np
 
-class AxTensor:
+class FlexTensor:
     def __init__(self, array, *axes):
         """A multi-dimensional array construct with labeled axes"""
         # Defines tensor values from numpy array

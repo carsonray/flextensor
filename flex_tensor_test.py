@@ -3,19 +3,19 @@
 
 
 import numpy as np
-from ax_tensor import AxTensor
+from flextensor import FlexTensor
 
 # Creates axTensors for movie ratings
 print("Movie Ratings:")
 print()
 
-customers = AxTensor(
+customers = FlexTensor(
     [[0, 0.5, 1],
     [1, 0.5, 0.5],
     [0, 1, 0],
     [1, 1, 1]], "customers", "values")
 
-movies = AxTensor(
+movies = FlexTensor(
     [[0, 1, 0.5],
     [1, 0, 0],
     [0.5, 0.5, 0.5]], "movies", "values")
@@ -38,7 +38,7 @@ print()
 
 # Performes tensor operation
 ratings = customers.by("customers", "values") @ movies.by("values", "movies")
-ratings = AxTensor(ratings, "customers", "movies")
+ratings = FlexTensor(ratings, "customers", "movies")
 
 describe(ratings)
 
@@ -50,8 +50,8 @@ print()
 print("Multiplication Table:")
 print()
 
-x = AxTensor(np.arange(10), "x")
-y = AxTensor(np.arange(10), "y")
+x = FlexTensor(np.arange(10), "x")
+y = FlexTensor(np.arange(10), "y")
 
 describe(x)
 
@@ -62,14 +62,14 @@ describe(y)
 print()
 
 # Multiplies in cartesian product form
-table = AxTensor(y.by("y", [1]) * x.by([1], "x"), "y", "x")
+table = FlexTensor(y.by("y", [1]) * x.by([1], "x"), "y", "x")
 
 describe(table)
 
 print()
 
 # Creates cubic table
-table = AxTensor(table.by([1], "y", "x") * x.by("x", [2]), "z", "y", "x")
+table = FlexTensor(table.by([1], "y", "x") * x.by("x", [2]), "z", "y", "x")
 
 describe(table)
 
