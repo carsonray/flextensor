@@ -27,7 +27,7 @@ class FlexTensor:
         return [other if own == "" else own for own, other in zip(self.axes, axes)]
 
     def pivot_ax(self, axes):
-        return [self.axes[0], axes[1]]
+        return [self.axes[:-1], axes[1:]]
         
     def ax(self, *labels):
         """Determines axis number of label(s)"""
